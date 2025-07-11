@@ -1,13 +1,13 @@
 'use client'
-import { createTranslator } from '@/lib/localization';
 
+import { translate } from '../actions';
 import { useParams } from 'next/navigation'
 import { Suspense } from 'react'
 
-export default function NotFound() {
-    const { locale } = useParams();
-    const t = createTranslator(locale as string);
-    const message = t('notFound');
+export default async function NotFound() {
+    const {locale} = useParams();
+
+    const message = await translate(locale, 'notFound')
 
     return <>
         <h1>404</h1>

@@ -1,2 +1,5 @@
-# This is a working example
-## But it only works when loading the translations from a file already present in the codebase.
+# This is a non-working example
+## As soon as we use actions and navigate to the not-found page, there is an infinite redirection that takes place.
+
+- http://localhost:3000/en/not-found 
+- http://localhost:3000/en/hello

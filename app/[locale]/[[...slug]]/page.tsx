@@ -1,5 +1,5 @@
-import { createTranslator, Locale } from '@/lib/localization';
 import { notFound } from 'next/navigation';
+import { translate } from '@/app/actions';
 
 interface HomePageProps {
   params: {
@@ -8,18 +8,17 @@ interface HomePageProps {
   };
 }
 
-export default function HomePage({ params }: HomePageProps) {
+export default async function HomePage({ params }: HomePageProps) {
   const { locale } = params;
 
   if (!params.slug || params.slug.includes("not-found")) notFound()
 
-  const t = createTranslator(locale);
-
-  const message = t('welcomeMessage');
+  const message = await translate(locale, 'welcomeMessage')
 
   return (
     <div>
       <h1>{message}</h1>
     </div>
   );
+
 }
