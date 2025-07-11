@@ -1,16 +1,18 @@
 'use client'
+import { createTranslator } from '@/lib/localization';
 
-import { usePathname } from 'next/navigation'
+import { useParams } from 'next/navigation'
 import { Suspense } from 'react'
-import getTranslation from './action'
 
 export default function NotFound() {
-    const pathname = usePathname()
+    const { locale } = useParams();
+    const t = createTranslator(locale as string);
+    const message = t('notFound');
 
     return <>
         <h1>404</h1>
         <Suspense fallback="loading">
-            {getTranslation(pathname).then((data) => <h1>{data}</h1>)}
+            {message}
         </Suspense>
     </>
 }

@@ -1,13 +1,25 @@
-import { notFound } from "next/navigation"
+import { createTranslator, Locale } from '@/lib/localization';
+import { notFound } from 'next/navigation';
 
-type Params = Promise<{ slug?: string[] }>
+interface HomePageProps {
+  params: {
+    locale: string;
+    slug?: string[];
+  };
+}
 
-export const dynamic = 'force-static'
+export default function HomePage({ params }: HomePageProps) {
+  const { locale } = params;
 
-export default async function Home(props: { params: Params }) {
-  const params = await props.params
-  // ignore: logic not important - just a way to test rendering not-found vs found
-  if (!params.slug || !params.slug.includes("bypass")) notFound()
+  if (!params.slug || params.slug.includes("not-found")) notFound()
 
-  return <h1>PAGE</h1>
+  const t = createTranslator(locale);
+
+  const message = t('welcomeMessage');
+
+  return (
+    <div>
+      <h1>{message}</h1>
+    </div>
+  );
 }

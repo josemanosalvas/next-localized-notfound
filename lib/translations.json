@@ -1,0 +1,18 @@
+{
+    "en": {
+      "welcomeMessage": "Welcome to our multi-language application!",
+      "notFound": "Page not found."
+    },
+    "fr": {
+      "welcomeMessage": "Bienvenue sur notre application multilingue !",
+      "notFound": "Page non trouvée."
+    },
+    "it": {
+      "welcomeMessage": "Benvenuti nella nostra applicazione multilingue!",
+      "notFound": "Pagina non trovata."
+    },
+    "de": {
+      "welcomeMessage": "Willkommen bei unserer mehrsprachigen Anwendung!",
+      "notFound": "Seite nicht gefunden."
+    }
+  }
